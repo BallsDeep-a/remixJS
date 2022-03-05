@@ -54,12 +54,3 @@ CREATE TABLE `Equipment` (
     UNIQUE INDEX `Equipment_body_key`(`body`),
     UNIQUE INDEX `Equipment_legs_key`(`legs`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
--- AddForeignKey
-ALTER TABLE `Profile` ADD CONSTRAINT `Profile_uuid_fkey` FOREIGN KEY (`uuid`) REFERENCES `User`(`uuid`) ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `Stats` ADD CONSTRAINT `Stats_uuid_fkey` FOREIGN KEY (`uuid`) REFERENCES `User`(`uuid`) ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `Equipment` ADD CONSTRAINT `Equipment_uuid_fkey` FOREIGN KEY (`uuid`) REFERENCES `User`(`uuid`) ON DELETE RESTRICT ON UPDATE CASCADE;
