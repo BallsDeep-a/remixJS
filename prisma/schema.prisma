@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model User {
+  uuid            String      @unique @default(uuid())
+  username        String      @unique
+  email           String
+  password        String
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  lastActiveAgent String
+  lastActiveIP    String
+  Profile         Profile[]
+  Stats           Stats[]
+  Equipment       Equipment[]
+}
+
+model Profile {
+  ProfileToUuid User     @relation(references: [uuid], fields: [uuid])
+  uuid          String   @unique
+  class         String
+  aboutMe       String?
+  avatar_path   String?
+  current_map   String?
+  experience    Int      @default(0)
+  role          Int?
+  lastActive    DateTime @default(now())
+}
+
+model Stats {
+  StatsToUuid User   @relation(references: [uuid], fields: [uuid])
+  uuid        String @unique
+  strength    Int    @default(0)
+  wisdom      Int    @default(0)
+  dexterity   Int    @default(0)
+  armor       Int    @default(0)
+}
+
+model Equipment {
+  EquipmentToUuid User   @relation(references: [uuid], fields: [uuid])
+  uuid            String @unique
+  main_hand       Int?    @unique
+  second_hand     Int?    @unique
+  head            Int?    @unique
+  body            Int?    @unique
+  legs            Int?    @unique
+}
