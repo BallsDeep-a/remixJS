@@ -20,11 +20,37 @@ export async function loader({ request }) {
 }
 
 export async function action({ request }) {
-  const prisma = new PrismaClient();
   const body = await request.formData();
   const username = body.get("username");
   const password = body.get("password");
   const session = await getSession(request.headers.get("Cookie"));
+
+  const prisma = new PrismaClient({
+    log: [
+      {
+        emit: "event",
+        level: "query",
+      },
+      {
+        emit: "stdout",
+        level: "error",
+      },
+      {
+        emit: "stdout",
+        level: "info",
+      },
+      {
+        emit: "stdout",
+        level: "warn",
+      },
+    ],
+  });
+
+  prisma.$on("query", (e) => {
+    console.log("Query: " + e.query);
+    console.log("Params: " + e.params);
+    console.log("Duration: " + e.duration + "ms");
+  });
 
   // Validate the constraints to the fields
   const errors = validate(
