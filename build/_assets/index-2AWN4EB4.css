@@ -1,0 +1,125 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+:root {
+  --main-color: white;
+  --main-bg-color: #333;
+  --main-link-color: #cea74c;
+
+  --second-bg-color: #1b1b1b;
+
+  --border-red-color: #a83f3f;
+  --border-yellow-color: #cea74c;
+
+  --input-color: #1b1b1b;
+  --input-bg-color: #ddd;
+  --input-font: Verdana;
+  --input-width: 50%;
+  --input-height: 1.25rem;
+}
+
+body {
+  background-color: var(--main-bg-color);
+  color: var(--main-color);
+  font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+}
+
+a {
+  color: var(--main-link-color);
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.logo {
+  width: 7rem;
+  height: 5rem;
+}
+
+.grey {
+  color: grey;
+}
+
+.container {
+  background-color: var(--second-bg-color);
+  width: 100%;
+}
+
+.border-red {
+  border-color: var(--border-red-color);
+}
+
+.border-yellow {
+  border-color: var(--border-yellow-color);
+}
+
+.input-username,
+.input-password {
+  color: var(--input-color);
+  font-family: var(--input-font);
+  background: var(--input-bg-color);
+  width: var(--input-width);
+  height: var(--input-height);
+}
+
+.input-login,
+.input-register,
+.input-button {
+  background: #8c0000;
+  color: white;
+}
+
+.input-login:hover,
+.input-register:hover,
+.input-button:hover {
+  background: #6d0000;
+  cursor: pointer;
+}
+
+.input-username::placeholder,
+.input-password::placeholder {
+  text-align: center;
+}
+
+.error-container {
+  line-height: 1.5rem;
+  color: #ff3838;
+}
+
+.link-colored {
+  color: var(--main-link-color);
+}
+
+.stretch {
+  width: 100%;
+}
+
+.class-preview-img {
+  width: 3rem;
+  height: 3rem;
+}
+
+.fit-content {
+  width: fit-content;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.text-red {
+  color: red;
+}
+
+.text-green {
+  color: green;
+}
+
+.spell-icon {
+  width: 1rem;
+  height: 1rem;
+}
